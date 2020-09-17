@@ -7,14 +7,15 @@ class MessageRoutes {
     public router: express.Router = express.Router();
 
     constructor() {
-        this.config();
+        this.init();
     }
 
-    private config(): void {
+    private init(): void {
 
         // comment later
         this.router.get(
             `${this.baseUrl}`,
+            messageValidator.receive,
             (req: express.Request, res: express.Response) => messageController.receive(req, res)
         )
 
