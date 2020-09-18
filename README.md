@@ -34,7 +34,7 @@ As a testing library we use jest (https://jestjs.io/):
 # Services
 There are 3 services (endpoints) available:
 
-## GET - serverUrl/messages
+## GET - [serverUrl]/messages
 This endpoint returns all the available messages for a Consumer to process them.
 After receiving messages, they will have a configured time to be processed. Otherwise they will go back to the list of unprocessed messages.
 
@@ -51,7 +51,7 @@ Output:
         - { status: 500, error }
 
 
-## POST - serverUrl/messages
+## POST - [serverUrl]/messages
 This endpoint creates, stores and returns a Message to be processed by a Consumer in the future.
 
 ### Input:
@@ -66,7 +66,7 @@ This endpoint creates, stores and returns a Message to be processed by a Consume
         - { status: 500, error }
 
 
-## PUT - serverUrl/messages/:messageId/
+## PUT - [serverUrl]/messages/:messageId/
 This endpoint deletes a successfully processed Message.
 The system will validate if the message is being processed. Otherwise it will throw an error because the time of process has expired.
 
