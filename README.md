@@ -86,6 +86,8 @@ There are many things that can be added to this project if we think about a prod
 
 First of all, we would need a persistance storage. Nowadays, we are saving the data in memory. I would recommend to use a non relational database (MongoDB), because it would be a very simple modeling structure with no relations on it. I would use mongoose as a library to work with Mongo.
 
+To let the system support high volume of users, we should think about a cloud hosting service (like AWS EC2) that allows to easily scale up the infrastructure, but we may still consume from an unique origin of data (we may use MongoDB Atlas).
+
 After that, I would develop some sort of authentication to allow only defined users to access our services and let each user have their own messages. We could implement the standard openId with a clientId and clientSecret.
 
 If the service grows, it would be great to document the REST API in a standard format like Swagger, to make it more accessible
