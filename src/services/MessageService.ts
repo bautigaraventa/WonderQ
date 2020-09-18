@@ -75,7 +75,7 @@ export class MessageService {
             messageRepository.delete(messageId);
 
             return {
-                message: messageId,
+                id: messageId,
             }
         } catch (error) {
             throw error;
