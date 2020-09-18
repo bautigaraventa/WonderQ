@@ -41,7 +41,7 @@ After receiving messages, they will have a configured time to be processed. Othe
 Input:
 
     - query:
-        - qty: (optional) max number of messages we want to receive.
+        - qty: (optional) {Number} max number of messages we want to receive.
 
 Output:
 
@@ -56,8 +56,8 @@ This endpoint creates and stores a Message to be processed by a Consumer in the 
 
 ### Input:
     - body:
-        - message: String The exact message,
-        - payload: (optional) Any Additional information of the message,
+        - message: {String} The exact message,
+        - payload: (optional) {Any} Additional information of the message,
 
 ### Output:
     - successful:
@@ -72,7 +72,7 @@ The system will validate if the message is being processed. Otherwise it will th
 
 ### Input:
     - params:
-        - messageId: String The unique identifier of the message to delete. 
+        - messageId: {String} The unique identifier of the message to delete. 
 
 ### Output:
     - successful:
