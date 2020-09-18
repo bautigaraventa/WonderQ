@@ -140,7 +140,7 @@ describe('Function: markAsProcessed', () => {
         }
 
         // Assert
-        expect(result).toStrictEqual({ message: idDummy });
+        expect(result).toStrictEqual({ id: idDummy });
         done();
     });
 
