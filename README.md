@@ -5,7 +5,7 @@ WonderQ is a broker that allows producers to write to it, and consumers to read 
 It's a REST API developed in node.js with typescript.
 
 
-# To start the project:
+# To start the project
     - npm install
     - set .env file (see section below)
     - npm run dev
@@ -16,7 +16,11 @@ It's a REST API developed in node.js with typescript.
     - PORT=3000 => the port where our server will listen to requests
     - MESSAGE_PROCESSING_TIME_MS=5000 => miliseconds to define the maximun time a message can be processed by a Consumer
 
-# Our base model is MessageModel:
+# Tests
+To run tests suites
+    - npm test
+
+# Our base model is MessageModel
 ```
 {
     id: string,
