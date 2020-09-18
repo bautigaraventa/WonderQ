@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { messageRepository } from "../repository/MessageRepository";
-import { MessageModel } from "../models/MessageModel";
 import { messageService } from "../services/MessageService";
 
 /**
@@ -17,19 +15,8 @@ export class MessageController {
      */
     public receive = (req: Request, res: Response) => {
         try {
-            const allMessages: MessageModel[] = messageRepository.getAll();
-            const filteredMessages: MessageModel[] = allMessages.filter((m) => !m.isBeingProcessed);
-
-            if (filteredMessages.length) {
-                filteredMessages.forEach(fm => {
-                    messageService.setMessageProcessingTimeout(fm.id);
-                    messageRepository.update(fm.id, { isBeingProcessed: true });
-                });
-            }
-
-            res.status(200).send({
-                messages: filteredMessages
-            });
+            const result = messageService.receive(Number(req.query.qty));
+            res.status(200).send(result);
         } catch (error) {
             res.status(500).send({
                 error: error.message,
@@ -44,11 +31,8 @@ export class MessageController {
      */
     public send = (req: Request, res: Response) => {
         try {
-            const messageCreated: MessageModel = messageRepository.create(req.body);
-
-            res.status(200).send({
-                id: messageCreated.id,
-            })
+            const result = messageService.send(req.body);
+            res.status(200).send(result);
         } catch (error) {
             res.status(500).send({
                 error: error.message,
@@ -63,15 +47,8 @@ export class MessageController {
      */
     public markAsProcessed = (req: Request, res: Response) => {
         try {
-            const messageToDelete = messageRepository.getOne(req.params.messageId);
-            if (!messageToDelete.isBeingProcessed) {
-                throw new Error(`The message time to process has expired`);
-            }
-
-            messageRepository.delete(req.params.messageId);
-            res.status(200).send({
-                message: req.params.messageId,
-            })
+            const result = messageService.markAsProcessed(req.params.messageId);
+            res.status(200).send(result);
         } catch (error) {
             res.status(500).send({
                 error: error.message,

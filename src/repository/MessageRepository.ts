@@ -30,7 +30,7 @@ export class MessageRepository implements IRepository {
     delete(id: string): void {
         const messageToDeleteIndex = database.messages.findIndex((m) => m.id === id);
         if (messageToDeleteIndex === -1) {
-            throw Error(`Invalid ID: ${id}`);
+            throw new Error(`Invalid ID: ${id}`);
         }
 
         database.messages.splice(messageToDeleteIndex, 1);
