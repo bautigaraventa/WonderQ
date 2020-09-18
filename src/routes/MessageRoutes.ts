@@ -12,24 +12,23 @@ class MessageRoutes {
 
     private init(): void {
 
-        // comment later
         this.router.get(
             `${this.baseUrl}`,
             messageValidator.receive,
-            (req: express.Request, res: express.Response) => messageController.receive(req, res)
-        )
+            messageController.receive,
+        );
 
-        // comment later
         this.router.post(
             `${this.baseUrl}`,
             messageValidator.send,
-            (req: express.Request, res: express.Response) => messageController.send(req, res));
+            messageController.send,
+        );
 
-        // comment later
         this.router.put(
             `${this.baseUrl}/:messageId/`,
             messageValidator.markAsProcessed,
-            (req: express.Request, res: express.Response) => messageController.markAsProcessed(req, res));
+            messageController.markAsProcessed,
+        );
     }
 }
 
