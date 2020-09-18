@@ -52,7 +52,7 @@ Output:
 
 
 ## POST - [serverUrl]/messages
-This endpoint creates, stores and returns a Message to be processed by a Consumer in the future.
+This endpoint creates and stores a Message to be processed by a Consumer in the future.
 
 ### Input:
     - body:
