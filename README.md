@@ -39,10 +39,12 @@ This endpoint returns all the available messages for a Consumer to process them.
 After receiving messages, they will have a configured time to be processed. Otherwise they will go back to the list of unprocessed messages.
 
 Input:
+
     - query:
         - qty: (optional) max number of messages we want to receive.
 
 Output:
+
     - successful:
         - { status: 200, messages: MessageModel[] }
     - error:
