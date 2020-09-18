@@ -66,7 +66,7 @@ This endpoint creates, stores and returns a Message to be processed by a Consume
         - { status: 500, error }
 
 
-## PUT - [serverUrl]/messages/:messageId/
+## PUT - [serverUrl]/messages/:messageId
 This endpoint deletes a successfully processed Message.
 The system will validate if the message is being processed. Otherwise it will throw an error because the time of process has expired.
 
